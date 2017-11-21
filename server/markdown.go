@@ -24,6 +24,7 @@ import (
 	"strings"
 	"text/template"
 	md "github.com/russross/blackfriday"
+	"fmt"
 )
 
 const tpl = `
@@ -51,7 +52,20 @@ const tpl = `
 
 </html>
 `
+const LOGO = `
+                                                  _
+                                          _______| |
+                                         |_________|
+                                          _________
+                                         |  _______|   万物互联
+                                         | |   ____
+                                         | |  |__  |   机智云
+                                         | |_____| |
+                                         |_________|   Gizwits
+                                          机智云只为硬件而生的云服务
 
+
+`
 const (
 	commonHTMLFlags = 0 |
 		md.HTML_USE_XHTML |
@@ -147,7 +161,8 @@ func RunMarkDownServer(addr string, rootPath string, css string) {
 	globalPath = rootPath
 	globalCss = css
 
-	log.Printf("Listening on %s, root path  %s", globalAddr, globalPath)
-	http.HandleFunc("/", handleServerMarkdown)
+	fmt.Println(LOGO)
+	log.Printf("Listening on %s,  path  %s", globalAddr, globalPath)
+	go http.HandleFunc("/", handleServerMarkdown)
 	log.Fatal(http.ListenAndServe(globalAddr, nil))
 }

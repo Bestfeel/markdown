@@ -1,12 +1,9 @@
 markdown文件在线浏览工具
 =======================
 
-
 ```
 go  get  -u  github.com/Bestfeel/markdown
-
 ```
-
 
 markdown文件在线浏览工具
 默认提供3种markdown样式。
@@ -20,17 +17,22 @@ markdown文件在线浏览工具
 mou和marxico在原来的基础上作了修改同时使用highlightjs增加了代码高亮
 
 
+效果图如下:
+
+* github主题样式
+
 ![](img/img01.png)
+
+* mou主题样式
+
 ![](img/img02.png)
-
-
 
 
 
 ```
 
 ➜ markdown -h
-Powerful markdown online,You can run server online view  markdown File  or  as   static File  server.
+This is a powerful online tool about markdown that allows you to run a service online to view markdown files, and can also serve as a static server
 
 Usage:
   markdown [flags]

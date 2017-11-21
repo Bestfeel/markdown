@@ -29,7 +29,7 @@ var (
 var RootCmd = &cobra.Command{
 	Use:   "markdown",
 	Short: "Powerful markdown online",
-	Long:  `Powerful markdown online,You can run server online view  markdown File  or  as   static File  server.`,
+	Long:  `This is a powerful online tool about markdown that allows you to run a service online to view markdown files,and can also serve as a static server`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		return nil
 	},
