@@ -38,7 +38,7 @@ Usage:
   markdown [flags]
 
 Flags:
-  -a, --addr string   server address (default ":8080")
+  -a, --addr string   server address (default ":7070")
   -c, --css string    markdown for css style.example [github|mou|marxico] (default "github")
   -h, --help          help for markdown
   -p, --path string   sever path (default ".")

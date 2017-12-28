@@ -1,4 +1,4 @@
-package server
+package markdown
 
 import (
 	"io"
@@ -75,9 +75,7 @@ const (
 )
 
 var (
-	globalAddr = ":8080"
-	globalPath = "."
-	globalCss  = "github"
+	globalAddr, globalPath, globalCss string
 )
 
 var cssMap = map[string]struct {
@@ -153,11 +151,9 @@ func handleServerMarkdown(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func RunMarkDownServer(addr string, rootPath string, css string) {
-	globalAddr = addr
-	globalPath = rootPath
-	globalCss = css
-
+func RunMarkDownServer(args ... string) {
+	fmt.Println(args)
+	globalAddr, globalPath, globalCss = args[0], args[1], args[2]
 	fmt.Println(LOGO)
 	log.Printf("Listening on %s,  path  %s", globalAddr, globalPath)
 	go http.HandleFunc("/", handleServerMarkdown)
