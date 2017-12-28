@@ -152,7 +152,6 @@ func handleServerMarkdown(w http.ResponseWriter, r *http.Request) {
 }
 
 func RunMarkDownServer(args ... string) {
-	fmt.Println(args)
 	globalAddr, globalPath, globalCss = args[0], args[1], args[2]
 	fmt.Println(LOGO)
 	log.Printf("Listening on %s,  path  %s", globalAddr, globalPath)
