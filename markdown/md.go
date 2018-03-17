@@ -107,7 +107,34 @@ func markdown(in io.Reader, out io.Writer) error {
 	return template.Must(template.New("markdown").Parse(tpl)).Execute(out, m)
 }
 
+func handleFuncHttp(w http.ResponseWriter, r *http.Request) {
+
+	w.Header().Add("Access-Control-Allow-Origin", "*")
+
+	if hasSuffix(r.URL.Path, []string{".jpg", ".css", ".png", ".png", ".js", ".gif"}) {
+		w.Header().Add("Cache-Control", "public, max-age=604800, must-revalidate")
+	} else {
+		w.Header().Add("Cache-Control", "no-cache, no-store, must-revalidate")
+		w.Header().Add("Pragma", "no-cache")
+		w.Header().Add("Expires", "0")
+	}
+
+}
+
+func hasSuffix(url string, prefix []string) bool {
+
+	for _, p := range prefix {
+		if strings.HasSuffix(url, p) {
+			return true
+		}
+	}
+	return false
+}
+
 func handleServerMarkdown(w http.ResponseWriter, r *http.Request) {
+
+	handleFuncHttp(w, r)
+
 	code := 200
 	var err error
 	defer func() {
@@ -155,6 +182,6 @@ func RunMarkDownServer(args ... string) {
 	globalAddr, globalPath, globalCss = args[0], args[1], args[2]
 	fmt.Println(LOGO)
 	log.Printf("Listening on %s,  path  %s", globalAddr, globalPath)
-	go http.HandleFunc("/", handleServerMarkdown)
+	http.HandleFunc("/", handleServerMarkdown)
 	log.Fatal(http.ListenAndServe(globalAddr, nil))
 }
