@@ -2,7 +2,7 @@ markdown文件在线浏览工具
 =======================
 
 ```
-go  get  -u  github.com/Bestfeel/markdown
+go  install github.com/Bestfeel/markdown@latest
 ```
 
 markdown文件在线浏览工具
@@ -21,11 +21,11 @@ mou和marxico在原来的基础上作了修改同时使用highlightjs增加了�
 
 * github主题样式
 
-![](img/img01.png)
+![](https://p.ipic.vip/tmoiep.png)
 
 * mou主题样式
 
-![](img/img02.png)
+![](https://p.ipic.vip/5vyc8r.png)
 
 
 
