@@ -1,6 +1,9 @@
-package markdown
+package mdr
 
 import (
+	"encoding/base64"
+	"fmt"
+	md "github.com/russross/blackfriday"
 	"io"
 	"io/ioutil"
 	"log"
@@ -9,9 +12,6 @@ import (
 	"path/filepath"
 	"strings"
 	"text/template"
-	md "github.com/russross/blackfriday"
-	"fmt"
-	"encoding/base64"
 )
 
 const tpl = `
@@ -79,7 +79,7 @@ var (
 )
 
 var cssMap = map[string]struct {
-	name, css   string;
+	name, css   string
 	isHighlight bool
 }{
 	"github":  {"markdown-body", GITHUB, false},
@@ -178,7 +178,7 @@ func handleServerMarkdown(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func RunMarkDownServer(args ... string) {
+func RunMarkDownServer(args ...string) {
 	globalAddr, globalPath, globalCss = args[0], args[1], args[2]
 	fmt.Println(LOGO)
 	log.Printf("Listening on %s,  path  %s", globalAddr, globalPath)

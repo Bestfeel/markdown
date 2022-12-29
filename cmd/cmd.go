@@ -2,21 +2,21 @@ package cmd
 
 import (
 	"fmt"
-	"os"
+	"github.com/Bestfeel/markdown/mdr"
 	"github.com/spf13/cobra"
-	"github.com/Bestfeel/markdown/markdown"
+	"os"
 )
 
 var (
 	globalAddr = ":7070"
 	globalPath = "."
-	globalCss  = "mou"
+	globalCss  = "marxico"
 )
 
 func init() {
 	RootCmd.Flags().StringVarP(&globalAddr, "addr", "a", ":7070", "server address")
 	RootCmd.Flags().StringVarP(&globalPath, "path", "p", ".", "sever path")
-	RootCmd.Flags().StringVarP(&globalCss, "css", "c", "mou", "markdown for css style.example [github|mou|marxico]")
+	RootCmd.Flags().StringVarP(&globalCss, "css", "c", "marxico", "markdown for css style.example [github|mou|marxico]")
 
 }
 
@@ -28,7 +28,7 @@ var RootCmd = &cobra.Command{
 		return nil
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		markdown.RunMarkDownServer(globalAddr, globalPath, globalCss)
+		mdr.RunMarkDownServer(globalAddr, globalPath, globalCss)
 	},
 }
 
